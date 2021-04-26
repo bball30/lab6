@@ -13,8 +13,12 @@ public class RequestManager {
 
     public Response manage(Request request) {
         commandManager.addToHistory(request.getCommandName());
-        ResponseCode responseCode = executeCommand(request.getCommandName(), request.getArgument(), request.getObjectArgument());
-        return new Response(responseCode, ResponseOutputer.getAndClear());
+        try {
+            ResponseCode responseCode = executeCommand(request.getCommandName(), request.getArgument(), request.getObjectArgument());
+            return new Response(responseCode, ResponseOutputer.getAndClear());
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     private ResponseCode executeCommand(String command, String argument, Object objectArgument) {

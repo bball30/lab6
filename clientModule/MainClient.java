@@ -10,7 +10,7 @@ public class MainClient {
     private static String host = "localhost";
     private static int port = 8778;
 
-    public static void main(String[] args) throws IOException, IncorrectInputInScriptException {
+    public static void main(String[] args) throws IOException, IncorrectInputInScriptException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
         Console console = new Console(scanner);
         Client client = new Client(host, port, console);

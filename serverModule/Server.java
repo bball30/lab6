@@ -2,13 +2,10 @@ package serverModule;
 
 import common.utility.Request;
 import common.utility.Response;
-import common.utility.ResponseCode;
 import serverModule.util.RequestManager;
 
 import java.io.*;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
@@ -17,13 +14,11 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Server {
     private int port;
     private RequestManager requestManager;
-    private SocketChannel socketChannel;
     private SocketAddress address;
     private ServerSocketChannel serverSocketChannel;
     private Scanner scanner;
@@ -69,7 +64,7 @@ public class Server {
                     Response response = executeRequest(new Request(userCommand[0], userCommand[1]));
                     System.out.println(response.getResponseBody());
                 }
-            } catch (Exception e){}
+            } catch (Exception ignored){}
         };
         Thread thread = new Thread(userInput);
         thread.start();
@@ -186,5 +181,5 @@ public class Server {
         objectInputStream.close();
         return request;
     }
- **/
+    **/
 }

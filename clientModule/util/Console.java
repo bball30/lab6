@@ -39,7 +39,7 @@ public class Console {
     public Request interactiveMode(ResponseCode serverResponseCode) throws IncorrectInputInScriptException {
         String userInput;
         String[] userCommand = {"", ""};
-        ProcessCode processCode = null;
+        ProcessCode processCode;
         try {
             do {
                 try {
